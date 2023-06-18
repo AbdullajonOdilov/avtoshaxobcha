@@ -1,10 +1,16 @@
 from django.urls import path
-from .views import MahsulotFilterAPIView, MahsulotAPIView, OluvchiAPIView, SavdoAPIView, ChiqimAPIView
+from .views import MahsulotFilterAPIView, MahsulotAPIView, OluvchiAPIView, SavdoAPIView, ChiqimAPIView, \
+    MahsulotFilterlarAPIView, ChiqimlarAPIView, SavdolarAPIView, OluvchilarAPIView, MahsulotlarAPIView
 
 urlpatterns = [
-    path('mahsulot_filter/', MahsulotFilterAPIView.as_view(), name='mahsulot_filter'),
-    path('mahsulot/', MahsulotAPIView.as_view(), name='mahsulot'),
-    path('oluvchi/', OluvchiAPIView.as_view(), name='oluvchi'),
-    path('savdo/', SavdoAPIView.as_view(), name='savdo'),
+    path('mahsulot_filterlar/', MahsulotFilterlarAPIView.as_view(), name='mahsulot_filterlar'),
+    path('mahsulot_filter/<int:pk>/', MahsulotFilterAPIView.as_view(), name='mahsulot_filter'),
+    path('mahsulotlar/', MahsulotlarAPIView.as_view(), name='mahsulotlar'),
+    path('mahsulot/<int:pk>/', MahsulotAPIView.as_view(), name='mahsulot'),
+    path('oluvchilar/', OluvchilarAPIView.as_view(), name='oluvchilar'),
+    path('oluvchi/<int:pk>/', OluvchiAPIView.as_view(), name='oluvchi'),
+    path('savdolar/', SavdolarAPIView.as_view(), name='savdolar'),
+    path('savdo/<int:pk>/', SavdoAPIView.as_view(), name='savdo'),
+    path('chiqimlar/', ChiqimlarAPIView.as_view(), name='chiqimlar'),
     path('chiqim/', ChiqimAPIView.as_view(), name='chiqim'),
 ]
