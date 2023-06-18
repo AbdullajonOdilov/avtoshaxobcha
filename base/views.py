@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import logout
 from rest_framework import status, generics
 
 from rest_framework.views import APIView
