@@ -1,8 +1,12 @@
 from django.urls import path
 from .views import MahsulotFilterAPIView, MahsulotAPIView, OluvchiAPIView, SavdoAPIView, ChiqimAPIView, \
-    MahsulotFilterlarAPIView, ChiqimlarAPIView, SavdolarAPIView, OluvchilarAPIView, MahsulotlarAPIView
+    MahsulotFilterlarAPIView, ChiqimlarAPIView, SavdolarAPIView, OluvchilarAPIView, MahsulotlarAPIView, \
+    LoginAPIView, LogoutAPIView
 
 urlpatterns = [
+    # Login URL
+    path('login/', LoginAPIView.as_view(), name='login'),
+    path('logout/', LogoutAPIView.as_view(), name='logout'),
     path('mahsulot_filterlar/', MahsulotFilterlarAPIView.as_view(), name='mahsulot_filterlar'),
     path('mahsulot_filter/<int:pk>/', MahsulotFilterAPIView.as_view(), name='mahsulot_filter'),
     path('mahsulotlar/', MahsulotlarAPIView.as_view(), name='mahsulotlar'),
