@@ -32,7 +32,7 @@ class Oluvchi(models.Model):
 class Savdo(models.Model):
     product = models.ForeignKey(Mahsulot, verbose_name="Mahsulot", on_delete=models.SET_NULL, null=True)
     amount = models.IntegerField(verbose_name="Miqdori")
-    cost = models.FloatField(verbose_name="Narxi")
+    cost = models.FloatField(verbose_name="umumiy narxi")
     oluvchi = models.ForeignKey(Oluvchi, on_delete=models.SET_NULL, verbose_name="Oluvchi", null=True, related_name="savdolar")
 
     def __str__(self):
