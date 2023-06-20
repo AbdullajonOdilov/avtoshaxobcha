@@ -14,6 +14,8 @@ from .models import Mahsulot_filter, Mahsulot, Oluvchi, Savdo, Chiqim
 from .serializers import MahsulotFilterSerializer, MahsulotSerializer, \
     OluvchiSerializer, SavdoSerializer,ChiqimSerializer
 
+from django.contrib.auth.hashers import make_password
+
 
 class LoginAPIView(APIView):
     permission_classes = [AllowAny]
@@ -29,6 +31,26 @@ class LoginAPIView(APIView):
         else:
             return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
+class ChangeUsernamePasswordAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        new_username = request.data.get('username')
+        new_password = request.data.get('password')
+        
+        # Change username
+        if new_username:
+            user.username = new_username
+            user.save()
+
+        # Change password
+        if new_password:
+            user.password = make_password(new_password)
+            user.save()
+
+        return Response({'message': 'Username and password updated successfully'}, status=status.HTTP_200_OK)
 
 class LogoutAPIView(APIView):
     permission_classes = [IsAuthenticated]
